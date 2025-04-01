@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { Booking, BookingId } from './interfaces/bookings.interfaces';
+import { IBooking, IBookingId } from './interfaces/bookings.interfaces';
+import { AddBookingDTO } from './dto/bookings.dto';
 
 
 @Injectable()
 export class BookingService {
-  add(booking: Booking): BookingId {
+  add(booking: AddBookingDTO): IBookingId {
     return { "bookingId" : "" }
   }
 }

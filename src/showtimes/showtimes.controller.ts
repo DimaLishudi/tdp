@@ -16,17 +16,17 @@ export class ShowtimeController {
   // todo: return type
   @Post()
   addShowtime(@Body() showtime: AddShowtimeDTO) {
-    return this.service.add(showtime);
+    return this.service.create(showtime);
   }
   
   @Post("update/:id")
-  updateShowtime(@Param("id") id: string,
+  updateShowtime(@Param("id") id: number,
                  @Body() showtime: UpdateShowtimeDTO): void {
     this.service.update(id, showtime);
   }
 
   @Delete(":id")
-  deleteShowtime(@Param("id") id: string): void {
+  deleteShowtime(@Param("id") id: number): void {
     this.service.delete(id);
   }
 }

@@ -6,7 +6,7 @@ import { AddShowtimeDTO, UpdateShowtimeDTO } from "./dto/showtimes.dto";
 
 
 @Injectable()
-export class MovieService {  
+export class ShowtimeService {  
   constructor(
     @InjectRepository(ShowtimeEntity)
     private readonly repository: Repository<ShowtimeEntity>,
