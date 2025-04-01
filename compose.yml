@@ -3,14 +3,14 @@ services:
     image: postgres
     restart: always
     environment:
-      POSTGRES_USER: popcorn-palace
-      POSTGRES_PASSWORD: popcorn-palace
-      POSTGRES_DB: popcorn-palace
+      POSTGRES_USER: ${POSTGRES_USER} # popcorn-palace
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
   #  volumes:
    #   - type: bind
    #     source: ./data
    #     target: /var/lib/postgresql/data --> in case u need to save data to local storage
     ports:
-      - target: 5432
-        published: 5432
+      - target: ${POSTGRES_PORT}
+        published: ${POSTGRES_PORT}
         protocol: tcp
