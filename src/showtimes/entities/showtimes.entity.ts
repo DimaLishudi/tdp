@@ -1,12 +1,17 @@
-import { Entity, Column, PrimaryGeneratedColumn, RelationId } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
+import { MovieEntity } from "../../movies/entities/movies.entity";
 
 @Entity()
 export class ShowtimeEntity {
   @PrimaryGeneratedColumn()
   id: number;
   
-  @Column("int")
+
+  @Column({nullable: true})
   movieId: number
+
+  @ManyToOne(() => MovieEntity, movie => movie.id)
+  movie: MovieEntity
 
   @Column("float")
   price: number

@@ -1,18 +1,24 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, HttpException, Injectable } from '@nestjs/common';
 import { IBookingId } from './interfaces/bookings.interfaces';
 import { AddBookingDTO } from './dto/bookings.dto';
-import { InjectDataSource } from '@nestjs/typeorm';
-import { DataSource } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { BookingEntity } from './entities/bookings.entity';
 
 
 @Injectable()
 export class BookingService {
   constructor(
-    @InjectDataSource()
-    private datasource: DataSource,
+    @InjectRepository(BookingEntity)
+    private repository: Repository<BookingEntity>,
   ) {}
 
-  add(booking: AddBookingDTO): IBookingId {
-    return { bookingId : "" }
+  async add(booking: AddBookingDTO): Promise<IBookingId> {
+    try {
+      const res = await this.repository.insert(booking);
+      return { bookingId : res.generatedMaps[0].id };
+    } catch (error) {
+      throw new BadRequestException("Non-unique booking");
+    }
   }
 }

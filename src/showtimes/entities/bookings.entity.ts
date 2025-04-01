@@ -1,12 +1,17 @@
-import { Entity, Column, PrimaryGeneratedColumn, RelationId } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, RelationId, ManyToOne, Unique } from "typeorm";
+import { ShowtimeEntity } from "./showtimes.entity";
 
 @Entity()
+@Unique(["showtimeId", "seatNumber"])
 export class BookingEntity {
   @PrimaryGeneratedColumn("uuid")
   id: string;
   
-  @Column("int")
+  @Column({nullable: true})
   showtimeId: number
+
+  @ManyToOne(() => ShowtimeEntity)
+  showtime: ShowtimeEntity
 
   @Column({length: 256})
   userId: string

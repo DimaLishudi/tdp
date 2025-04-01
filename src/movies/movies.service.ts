@@ -10,7 +10,7 @@ import { AddMovieDTO, UpdateMovieDTO } from "./dto/movies.dto";
 export class MovieService {  
   constructor(
     @InjectRepository(MovieEntity)
-    private readonly repository: Repository<MovieEntity>,
+    private repository: Repository<MovieEntity>,
   ) {}
 
   getAll(): Promise<MovieEntity[]> {
