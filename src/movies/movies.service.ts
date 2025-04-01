@@ -2,7 +2,7 @@ import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 // import { IMovie } from "./interfaces/movies.interfaces";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { MovieEntity } from "./movies.entity";
+import { MovieEntity } from "./entities/movies.entity";
 import { AddMovieDTO, UpdateMovieDTO } from "./dto/movies.dto";
 
 
@@ -18,7 +18,6 @@ export class MovieService {
   }
 
   create(movie: AddMovieDTO): MovieEntity {
-    // const movie = new MovieEntity(AddMovieDTO...)
     return this.repository.create(movie);
   }
   

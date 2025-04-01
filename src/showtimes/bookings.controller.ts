@@ -3,12 +3,12 @@ import { BookingService } from './bookings.service';
 import { AddBookingDTO } from './dto/bookings.dto';
 
 
-@Controller("showtimes")
-export class ShowtimeController {
+@Controller("bookings")
+export class BookingController {
   constructor(private readonly service: BookingService) {}
   
   @Post()
-  addShowtime(@Body() booking: AddBookingDTO) {
+  addBooking(@Body() booking: AddBookingDTO) {
     return this.service.add(booking);
   }
 }

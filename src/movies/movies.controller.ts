@@ -14,7 +14,7 @@ export class MovieController {
   }
 
   @Post()
-  addMovie(@Body() movie: AddMovieDTO) {
+  addMovie(@Body() movie: AddMovieDTO): IMovie {
     return this.service.create(movie);
   }
   
@@ -25,7 +25,7 @@ export class MovieController {
   }
 
   @Delete(":title")
-  deleteMovie(@Param("title") title: string): void {
-    this.service.delete(title);
+  async deleteMovie(@Param("title") title: string): Promise<void> {
+    return this.service.delete(title);
   }
 }

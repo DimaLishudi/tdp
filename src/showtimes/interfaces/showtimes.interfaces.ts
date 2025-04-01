@@ -1,5 +1,6 @@
 export interface IShowtime {
-    movieId: string;
+    id: number;
+    movieId: number;
     price: number;
     theater: string;
     startTime: Date;
